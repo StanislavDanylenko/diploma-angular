@@ -1,0 +1,14 @@
+.footer{
+  z-index: -1;
+  flex-grow: 0;
+  background: #eee;
+  padding: 3px 10px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+p {
+  font-weight: 100;
+  margin: 5px;
+}

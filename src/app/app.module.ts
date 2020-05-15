@@ -45,6 +45,8 @@ import {MatGridListModule} from '@angular/material/grid-list';
 import {MatDatepickerModule} from '@angular/material/datepicker';
 import {MatNativeDateModule} from '@angular/material/core';
 import {MatRadioModule} from '@angular/material/radio';
+import { AnimalInfoComponent } from './components/user-child/animal-child/animal-info/animal-info.component';
+import { AnimalGraftsComponent } from './components/user-child/animal-child/animal-grafts/animal-grafts.component';
 
 @NgModule({
   declarations: [
@@ -66,6 +68,8 @@ import {MatRadioModule} from '@angular/material/radio';
     UsersComponent,
     AppFooterComponent,
     DiseaseModalComponent,
+    AnimalInfoComponent,
+    AnimalGraftsComponent,
   ],
   imports: [
     BrowserModule,

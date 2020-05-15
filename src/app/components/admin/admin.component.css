@@ -45,3 +45,8 @@ h1.app-name {
 .selected {
   color: white!important;
 }
+
+mat-sidenav-content {
+  padding: 30px;
+  background-color: #e5f2f6;
+}

@@ -23,7 +23,11 @@
         {{ errorMessage }}
       </p>
       <p class="button">
-        <button type="submit" mat-raised-button color="primary">Login</button>
+        <button type="submit" mat-raised-button color="primary">
+          Login
+          <mat-spinner diameter="20" color="accent"></mat-spinner>
+        </button>
+
       </p>
       <p class="button">Don't have an account? <a routerLink="/registration">Sign up</a></p>
     </form>

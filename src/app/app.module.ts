@@ -47,6 +47,11 @@ import {MatNativeDateModule} from '@angular/material/core';
 import {MatRadioModule} from '@angular/material/radio';
 import { AnimalInfoComponent } from './components/user-child/animal-child/animal-info/animal-info.component';
 import { AnimalGraftsComponent } from './components/user-child/animal-child/animal-grafts/animal-grafts.component';
+import {ErrorInterceptor} from './security/error.interceptor';
+import {HTTP_INTERCEPTORS} from '@angular/common/http';
+import {JwtInterceptor} from './security/jwt.interceptor';
+import { HttpClientModule } from '@angular/common/http';
+import { ProfileComponent } from './components/common/profile/profile.component';
 
 @NgModule({
   declarations: [
@@ -70,6 +75,7 @@ import { AnimalGraftsComponent } from './components/user-child/animal-child/anim
     DiseaseModalComponent,
     AnimalInfoComponent,
     AnimalGraftsComponent,
+    ProfileComponent,
   ],
   imports: [
     BrowserModule,
@@ -99,9 +105,12 @@ import { AnimalGraftsComponent } from './components/user-child/animal-child/anim
     MatDatepickerModule,
     MatNativeDateModule,
     MatRadioModule,
+    HttpClientModule
   ],
   providers: [
     MatDatepickerModule,
+    { provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true },
+    { provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true },
   ],
   bootstrap: [AppComponent],
   entryComponents: [DiseaseModalComponent],

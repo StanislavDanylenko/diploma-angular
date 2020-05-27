@@ -8,7 +8,7 @@
     <div style="height: 30px;"></div>
   </mat-card-title>
   <mat-card-content>
-    <form [formGroup]="form" (ngSubmit)="submit()">
+    <form [formGroup]="loginForm" (ngSubmit)="submit()">
       <p>
         <mat-form-field>
           <input type="text" matInput placeholder="Username" formControlName="username">
@@ -19,13 +19,13 @@
           <input type="password" matInput placeholder="Password" formControlName="password">
         </mat-form-field>
       </p>
-      <p *ngIf="error" class="loginError">
-        {{ errorMessage }}
+      <p *ngIf="error" class="error">
+        {{ error }}
       </p>
       <p class="button">
         <button type="submit" mat-raised-button color="primary">
+          <mat-spinner diameter="20" color="accent" *ngIf="loading"></mat-spinner>
           Login
-          <mat-spinner diameter="20" color="accent"></mat-spinner>
         </button>
 
       </p>

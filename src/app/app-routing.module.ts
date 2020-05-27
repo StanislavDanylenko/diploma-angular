@@ -15,6 +15,7 @@ import {AnimalClassComponent} from './components/admin-child/animal-class/animal
 import {UsersComponent} from './components/admin-child/users/users.component';
 import {AnimalBreedComponent} from './components/admin-child/animal-breed/animal-breed.component';
 import {GraftComponent} from './components/admin-child/graft/graft.component';
+import {AuthGuard} from './security/auth.guard';
 
 const routes: Routes = [
   {path: '', redirectTo: '/main', pathMatch: 'full'},
@@ -37,6 +38,7 @@ const routes: Routes = [
         component: EpidemicComponent,
       },
     ],
+    canActivate: [AuthGuard],
   },
   {
     path: 'admin',

@@ -53,15 +53,19 @@ export class LoginComponent implements OnInit {
       .pipe(first())
       .subscribe(
         data => {
-          if (this.returnUrl === '/') {
-            this.returnUrl = `/${data.role.toLowerCase()}`;
-          }
+          this.getReturnUrl(data);
           this.router.navigate([this.returnUrl]);
         },
         error => {
           this.error = error;
           this.loading = false;
         });
+  }
+
+  getReturnUrl(user) {
+    if (this.returnUrl === '/' || this.returnUrl.lastIndexOf(user.role.toLowerCase()) === -1) {
+      this.returnUrl = `/${user.role.toLowerCase()}`;
+    }
   }
 
 }

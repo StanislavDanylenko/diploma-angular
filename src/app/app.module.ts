@@ -52,6 +52,8 @@ import {HTTP_INTERCEPTORS} from '@angular/common/http';
 import {JwtInterceptor} from './security/jwt.interceptor';
 import { HttpClientModule } from '@angular/common/http';
 import { ProfileComponent } from './components/common/profile/profile.component';
+import { ProfileModalComponent } from './components/common/profile-modal/profile-modal.component';
+import {MatSelectModule} from '@angular/material/select';
 
 @NgModule({
   declarations: [
@@ -76,6 +78,7 @@ import { ProfileComponent } from './components/common/profile/profile.component'
     AnimalInfoComponent,
     AnimalGraftsComponent,
     ProfileComponent,
+    ProfileModalComponent,
   ],
   imports: [
     BrowserModule,
@@ -105,7 +108,8 @@ import { ProfileComponent } from './components/common/profile/profile.component'
     MatDatepickerModule,
     MatNativeDateModule,
     MatRadioModule,
-    HttpClientModule
+    HttpClientModule,
+    MatSelectModule
   ],
   providers: [
     MatDatepickerModule,

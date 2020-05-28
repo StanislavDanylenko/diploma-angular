@@ -1,0 +1,28 @@
+mat-form-field {
+  width: 90%;
+}
+.btn-sec {
+  margin-right: 1rem !important;
+  text-align: right;
+  margin-top: 1.5em;
+}
+.Update-btn {
+  margin: 5px;
+}
+.Discard-btn {
+  margin: 5px;
+}
+.text-inside {
+  left: 5px;
+  width: 100%;
+}
+@media (max-width: 800px) {
+  .btn-sec {
+    margin-right: 1rem !important;
+  }
+}
+@media (max-width: 600px) {
+  .btn-sec {
+    margin-right: 1rem !important;
+  }
+}

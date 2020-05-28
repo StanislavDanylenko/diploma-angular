@@ -1,0 +1,72 @@
+<div>
+  <div class="add-title">
+    <h2 class="primary">Profile info</h2>
+  </div>
+  <div>
+    <mat-grid-list cols="1" [cols]="breakpoint" rowHeight="240px" (window:resize)="onResize($event)">
+      <mat-grid-tile>
+        <form [formGroup]="profileF">
+          <div class="text-inside">
+            <mat-form-field class="example-full-width">
+              <mat-label>Country</mat-label>
+              <mat-select formControlName="countryId" required [(value)]="country">
+                <mat-option *ngFor="let country of countries" [value]="country.id">{{country.name}}</mat-option>
+              </mat-select>
+            </mat-form-field>
+            <mat-form-field class="example-full-width">
+              <mat-label>Localization</mat-label>
+              <mat-select formControlName="localization" required [(value)]="localization">
+                <mat-option *ngFor="let l18n of localizations" [value]="l18n.key">{{l18n.value}}</mat-option>
+              </mat-select>
+            </mat-form-field>
+          </div>
+
+          <div class="btn-sec">
+            <button mat-raised-button type="submit" color="primary" mat-dialog-close [disabled]="profileF.invalid"
+                    class="Update-btn" (click)="saveProfile()">Save
+            </button>
+          </div>
+
+        </form>
+      </mat-grid-tile>
+      <mat-grid-tile>
+        <form [formGroup]="profileP">
+          <div class="text-inside">
+            <mat-form-field class="example-full-width">
+              <input matInput placeholder="Old password" formControlName="oldPassword" required>
+              <mat-error *ngIf="profileP.controls.oldPassword.hasError('required')">
+                Please enter old password
+              </mat-error>
+            </mat-form-field>
+            <mat-form-field class="example-full-width">
+              <input matInput placeholder="New password" formControlName="newPassword" required>
+              <mat-error *ngIf="profileP.controls.newPassword.hasError('required')">
+                Please enter new password
+              </mat-error>
+            </mat-form-field>
+            <mat-form-field class="example-full-width">
+              <input matInput placeholder="Repeat new password" formControlName="repeatPassword" required>
+              <mat-error *ngIf="profileP.controls.repeatPassword.hasError('required')">
+                Please repeat new password
+              </mat-error>
+              <mat-error *ngIf="profileP.controls.repeatPassword.hasError('validateRepeatPassword')">
+                Passwords should be the same
+              </mat-error>
+            </mat-form-field>
+          </div>
+
+          <div class="btn-sec">
+            <button mat-raised-button type="submit" color="primary" mat-dialog-close [disabled]="profileP.invalid"
+                    class="Update-btn" (click)="savePassword()">Save
+            </button>
+          </div>
+
+        </form>
+      </mat-grid-tile>
+    </mat-grid-list>
+
+    <div class="btn-sec">
+      <button mat-raised-button type="button" class="Discard-btn" (click)="close()">Cancel</button>
+    </div>
+  </div>
+</div>

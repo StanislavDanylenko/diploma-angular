@@ -27,41 +27,6 @@ export class ProfileComponent implements OnInit {
     this.getCountryList();
   }
 
-  private getCountryList() {
-    this.countryService.getAll()
-      .subscribe(
-        data => {
-          this.countryList = data;
-          console.log(data);
-        },
-        error => {
-          Swal.fire({
-            title: 'Auto close alert!',
-            text: 'I will close in 2 seconds.',
-            timer: 2000
-          });
-        });
-  }
-
-  private getUserInfo() {
-    this.userService.getById(this.user.id)
-      .subscribe(
-        data => {
-          this.user.localization = data.localization;
-          this.user.country = data.country;
-          this.user.roles = data.roles;
-          this.user.username = data.username;
-          console.log(this.user);
-        },
-        error => {
-          Swal.fire({
-            title: 'Auto close alert!',
-            text: 'I will close in 2 seconds.',
-            timer: 2000
-          });
-        });
-  }
-
   ngOnInit(): void {
   }
 
@@ -72,6 +37,14 @@ export class ProfileComponent implements OnInit {
 
   openDialog() {
     const dialogConfig = new MatDialogConfig();
+
+    if (!(this.user.country && this.countryList && this.user.localization)) {
+      this.getUserInfo();
+      this.getCountryList();
+      if (!(this.user.country && this.countryList && this.user.localization)) {
+        return;
+      }
+    }
 
     dialogConfig.autoFocus = true;
     dialogConfig.closeOnNavigation = true;
@@ -90,5 +63,41 @@ export class ProfileComponent implements OnInit {
       data => console.log('Dialog output:', data)
     );
   }
+
+  private getCountryList() {
+    this.countryService.getAll()
+      .subscribe(
+        data => {
+          this.countryList = data;
+        },
+        error => {
+          Swal.fire({
+            title: 'Error',
+            text: 'Cannot get data, try later',
+            showConfirmButton: true,
+            icon: 'error',
+          });
+        });
+  }
+
+  private getUserInfo() {
+    this.userService.getById(this.user.id)
+      .subscribe(
+        data => {
+          this.user.localization = data.localization;
+          this.user.country = data.country;
+          this.user.roles = data.roles;
+          this.user.username = data.username;
+        },
+        error => {
+          Swal.fire({
+            title: 'Error',
+            text: 'Cannot get data, try later',
+            showConfirmButton: true,
+            icon: 'error',
+          });
+        });
+  }
+
 
 }

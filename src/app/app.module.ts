@@ -55,6 +55,7 @@ import { ProfileComponent } from './components/common/profile/profile.component'
 import { ProfileModalComponent } from './components/common/profile-modal/profile-modal.component';
 import {MatSelectModule} from '@angular/material/select';
 import { CountryGraftPipe } from './pipes/country-graft.pipe';
+import { CountryModalComponent } from './components/admin-child/modal/country-modal/country-modal.component';
 
 @NgModule({
   declarations: [
@@ -81,6 +82,7 @@ import { CountryGraftPipe } from './pipes/country-graft.pipe';
     ProfileComponent,
     ProfileModalComponent,
     CountryGraftPipe,
+    CountryModalComponent,
   ],
   imports: [
     BrowserModule,

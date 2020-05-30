@@ -1,38 +1,32 @@
-import {Component, EventEmitter, Inject, NgZone} from '@angular/core';
+import {Component, EventEmitter, Inject, NgZone, OnInit} from '@angular/core';
 import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 import {MAT_DIALOG_DATA, MatDialogRef} from '@angular/material/dialog';
+import {AnimalClassModalComponent} from '../animal-class-modal/animal-class-modal.component';
 
 @Component({
   selector: 'app-disease-modal',
   templateUrl: './disease-modal.component.html',
   styleUrls: ['./disease-modal.component.css']
 })
-export class DiseaseModalComponent {
-  public breakpoint: number;
-
+export class DiseaseModalComponent implements OnInit {
   form: FormGroup;
-  fname: string;
-  lname: string;
+  id = '';
+  name = '';
+  private dialogRef: MatDialogRef<AnimalClassModalComponent>;
 
-  private dialogRef: MatDialogRef<DiseaseModalComponent>;
-
-  constructor(
-    private fb: FormBuilder,
-    dialogRef: MatDialogRef<DiseaseModalComponent>,
-    @Inject(MAT_DIALOG_DATA) data) {
+  constructor(private fb: FormBuilder,
+              dialogRef: MatDialogRef<AnimalClassModalComponent>,
+              @Inject(MAT_DIALOG_DATA) data) {
     this.dialogRef = dialogRef;
-
-    this.fname = data.description;
+    this.id = data.id;
+    this.name = data.name;
   }
 
-  ngOnInit() {
+  ngOnInit(): void {
     this.form = this.fb.group({
-      IdProof: null,
-      firstname: [this.fname, [Validators.required, Validators.pattern('[a-zA-Z]+([a-zA-Z ]+)*')]],
-      lastname: [this.lname, [Validators.required, Validators.pattern('[a-zA-Z]+([a-zA-Z ]+)*')]],
-      email: [null, [Validators.required, Validators.email]],
+      id: [this.id],
+      name: [this.name, [Validators.required]],
     });
-    this.breakpoint = window.innerWidth <= 600 ? 1 : 2;
   }
 
   save() {
@@ -41,9 +35,5 @@ export class DiseaseModalComponent {
 
   close() {
     this.dialogRef.close();
-  }
-
-  public onResize(event: any): void {
-    this.breakpoint = event.target.innerWidth <= 600 ? 1 : 2;
   }
 }

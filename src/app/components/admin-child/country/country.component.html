@@ -53,7 +53,7 @@
                 (click)="openDialogEdit(row)">
                 <mat-icon>edit</mat-icon>&ensp;Edit
               </button>
-              <button mat-raised-button color="warn"><mat-icon>delete</mat-icon>&ensp;Delete</button>
+              <button mat-raised-button color="warn" (click)="deleteCountry(row.country.id)"><mat-icon>delete</mat-icon>&ensp;Delete</button>
             </div>
           </td>
         </ng-container>

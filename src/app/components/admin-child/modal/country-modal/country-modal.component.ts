@@ -29,7 +29,6 @@ export class CountryModalComponent implements OnInit {
     this.description = data.description;
     this.countryGrafts = data.countryGrafts;
     this.countryGraftsSelected = data.countryGraftsSelected;
-    console.log(data);
   }
 
   ngOnInit(): void {

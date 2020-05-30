@@ -16,7 +16,7 @@ import {Country} from '../../../models/country';
   templateUrl: './country.component.html',
   styleUrls: ['./country.component.css']
 })
-export class CountryComponent implements OnInit {
+export class CountryComponent {
 
   countryList: CountryWithGraft[];
   graftList: Graft[];
@@ -32,9 +32,6 @@ export class CountryComponent implements OnInit {
               private dialog: MatDialog) {
     this.getCountryList();
     this.getGraftList();
-  }
-
-  ngOnInit() {
   }
 
   applyFilter(event: Event) {

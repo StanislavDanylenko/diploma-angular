@@ -22,15 +22,15 @@ export class CountryService {
   }
 
   getById(id: number) {
-    return this.http.get<Country[]>(`${this.url}/${id}`);
+    return this.http.get<Country>(`${this.url}/${id}`);
   }
 
   save(country: Country) {
-    return this.http.post<any>(`${this.url}`, country);
+    return this.http.post<Country>(`${this.url}`, country);
   }
 
   update(country: CountryWithGraft, id: number) {
-    return this.http.put<any>(`${this.url}/${id}`, country);
+    return this.http.put<Country>(`${this.url}/${id}`, country);
   }
 
   dalete(id: number) {

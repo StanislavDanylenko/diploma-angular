@@ -100,13 +100,10 @@ export class CountryComponent implements OnInit {
       countryGrafts: this.graftList
     };
 
-    console.log(dialogConfig.data);
-
     const dialogRef = this.dialog.open(CountryModalComponent, dialogConfig);
 
     dialogRef.afterClosed().subscribe(
       data => {
-        console.log('Dialog output:', data);
         if (data) {
           const countryWithGrafts = data as CountryWithGraft;
           countryWithGrafts.country = new Country(data.id, data.name, data.description);
@@ -132,7 +129,6 @@ export class CountryComponent implements OnInit {
 
     dialogRef.afterClosed().subscribe(
       data => {
-        console.log('Dialog output:', data);
         if (data) {
           const countryWithGrafts = data as CountryWithGraft;
           countryWithGrafts.country = new Country(data.id, data.name, data.description);

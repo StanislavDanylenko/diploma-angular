@@ -57,6 +57,7 @@ import {MatSelectModule} from '@angular/material/select';
 import { CountryGraftPipe } from './pipes/country-graft.pipe';
 import { CountryModalComponent } from './components/admin-child/modal/country-modal/country-modal.component';
 import { AnimalClassModalComponent } from './components/admin-child/modal/animal-class-modal/animal-class-modal.component';
+import { GraftModalComponent } from './components/admin-child/modal/graft-modal/graft-modal.component';
 
 @NgModule({
   declarations: [
@@ -85,6 +86,7 @@ import { AnimalClassModalComponent } from './components/admin-child/modal/animal
     CountryGraftPipe,
     CountryModalComponent,
     AnimalClassModalComponent,
+    GraftModalComponent,
   ],
   imports: [
     BrowserModule,

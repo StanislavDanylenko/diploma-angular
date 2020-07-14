@@ -58,6 +58,7 @@ import { CountryGraftPipe } from './pipes/country-graft.pipe';
 import { CountryModalComponent } from './components/admin-child/modal/country-modal/country-modal.component';
 import { AnimalClassModalComponent } from './components/admin-child/modal/animal-class-modal/animal-class-modal.component';
 import { GraftModalComponent } from './components/admin-child/modal/graft-modal/graft-modal.component';
+import { AnimalBreedModalComponent } from './components/admin-child/modal/animal-breed-modal/animal-breed-modal.component';
 
 @NgModule({
   declarations: [
@@ -87,6 +88,7 @@ import { GraftModalComponent } from './components/admin-child/modal/graft-modal/
     CountryModalComponent,
     AnimalClassModalComponent,
     GraftModalComponent,
+    AnimalBreedModalComponent,
   ],
   imports: [
     BrowserModule,

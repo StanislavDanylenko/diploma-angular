@@ -7,18 +7,21 @@
       <mat-grid-tile>
         <form [formGroup]="profileF">
           <div class="text-inside">
+
             <mat-form-field class="example-full-width">
               <mat-label>Country</mat-label>
               <mat-select formControlName="countryId" required [(value)]="country">
                 <mat-option *ngFor="let country of countries" [value]="country.id">{{country.name}}</mat-option>
               </mat-select>
             </mat-form-field>
+
             <mat-form-field class="example-full-width">
               <mat-label>Localization</mat-label>
               <mat-select formControlName="localization" required [(value)]="localization">
                 <mat-option *ngFor="let l18n of localizations" [value]="l18n.key">{{l18n.value}}</mat-option>
               </mat-select>
             </mat-form-field>
+
           </div>
 
           <div class="btn-sec">
@@ -32,20 +35,23 @@
       <mat-grid-tile>
         <form [formGroup]="profileP">
           <div class="text-inside">
+
             <mat-form-field class="example-full-width">
               <input matInput placeholder="Old password" formControlName="oldPassword" required>
               <mat-error *ngIf="profileP.controls.oldPassword.hasError('required')">
                 Please enter old password
               </mat-error>
             </mat-form-field>
+
             <mat-form-field class="example-full-width">
-              <input matInput placeholder="New password" formControlName="newPassword" required>
+              <input type="password" matInput placeholder="New password" formControlName="newPassword" required>
               <mat-error *ngIf="profileP.controls.newPassword.hasError('required')">
                 Please enter new password
               </mat-error>
             </mat-form-field>
+
             <mat-form-field class="example-full-width">
-              <input matInput placeholder="Repeat new password" formControlName="repeatPassword" required>
+              <input type="password" matInput placeholder="Repeat new password" formControlName="repeatPassword" required>
               <mat-error *ngIf="profileP.controls.repeatPassword.hasError('required')">
                 Please repeat new password
               </mat-error>
@@ -53,6 +59,7 @@
                 Passwords should be the same
               </mat-error>
             </mat-form-field>
+
           </div>
 
           <div class="btn-sec">

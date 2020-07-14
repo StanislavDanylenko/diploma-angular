@@ -2,9 +2,10 @@ import {Injectable} from '@angular/core';
 import {HttpClient} from '@angular/common/http';
 import {FullUser} from '../models/full-user';
 import {environment} from '../../environments/environment';
-import {AnimalClass} from '../models/animal-class';
 import {UserAdmin} from '../models/user-admin';
 import {ProfileInfo} from '../models/profile-info';
+import {Password} from '../models/password';
+import {User} from '../models/user';
 
 @Injectable({
   providedIn: 'root'
@@ -12,7 +13,8 @@ import {ProfileInfo} from '../models/profile-info';
 export class UserService {
   private url = `${environment.apiUrl}/user`;
 
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient) {
+  }
 
   getAll() {
     return this.http.get<FullUser[]>(`${this.url}`);
@@ -27,11 +29,11 @@ export class UserService {
   }
 
   updateProfile(profileInfo: ProfileInfo, id: number) {
-    return this.http.put<AnimalClass>(`${this.url}/${id}`, profileInfo);
+    return this.http.put<User>(`${this.url}/${id}`, profileInfo);
   }
 
-  updatePassword(profileInfo: ProfileInfo, id: number) {
-    return this.http.put<AnimalClass>(`${this.url}/${id}`, profileInfo);
+  updatePassword(password: Password) {
+    return this.http.post<User>(`${this.url}/password`, password);
   }
 
   dalete(id: number) {

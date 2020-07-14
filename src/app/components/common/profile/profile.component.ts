@@ -7,6 +7,9 @@ import {Country} from '../../../models/country';
 import {ProfileModalComponent} from '../profile-modal/profile-modal.component';
 import Swal from 'sweetalert2';
 import {UserService} from '../../../service/user.service';
+import {UserAdmin} from '../../../models/user-admin';
+import {ProfileInfo} from '../../../models/profile-info';
+import {Password} from '../../../models/password';
 
 @Component({
   selector: 'app-profile',
@@ -60,7 +63,19 @@ export class ProfileComponent implements OnInit {
     const dialogRef = this.dialog.open(ProfileModalComponent, dialogConfig);
 
     dialogRef.afterClosed().subscribe(
-      data => console.log('Dialog output:', data)
+      data => {
+        if (data) {
+          if (data.countryId) {
+            const profile = data as ProfileInfo;
+            this.updateProfile(profile, this.user.id);
+          } else {
+            const password = data as Password;
+            password.id = this.user.id;
+            console.log(password);
+            this.updatePassword(password);
+          }
+        }
+      }
     );
   }
 
@@ -99,5 +114,44 @@ export class ProfileComponent implements OnInit {
         });
   }
 
+  private updateProfile(profile: ProfileInfo, userId: number) {
+    this.userService.updateProfile(profile, userId).subscribe(
+      data => {
+        this.getUserInfo();
+        Swal.fire({
+          title: 'Success',
+          text: 'Successfully updated',
+          showConfirmButton: true,
+          icon: 'success',
+        });
+      },
+      error => {
+        Swal.fire({
+          title: 'Error',
+          text: 'Cannot save data, try later',
+          showConfirmButton: true,
+          icon: 'error',
+        });
+      });
+  }
 
+  private updatePassword(password: Password) {
+    this.userService.updatePassword(password).subscribe(
+      data => {
+        Swal.fire({
+          title: 'Success',
+          text: 'Successfully updated',
+          showConfirmButton: true,
+          icon: 'success',
+        });
+      },
+      error => {
+        Swal.fire({
+          title: 'Error',
+          text: 'Cannot save data, try later',
+          showConfirmButton: true,
+          icon: 'error',
+        });
+      });
+  }
 }

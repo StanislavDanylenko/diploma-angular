@@ -59,6 +59,7 @@ import { CountryModalComponent } from './components/admin-child/modal/country-mo
 import { AnimalClassModalComponent } from './components/admin-child/modal/animal-class-modal/animal-class-modal.component';
 import { GraftModalComponent } from './components/admin-child/modal/graft-modal/graft-modal.component';
 import { AnimalBreedModalComponent } from './components/admin-child/modal/animal-breed-modal/animal-breed-modal.component';
+import { UserModalComponent } from './components/admin-child/modal/user-modal/user-modal.component';
 
 @NgModule({
   declarations: [
@@ -89,6 +90,7 @@ import { AnimalBreedModalComponent } from './components/admin-child/modal/animal
     AnimalClassModalComponent,
     GraftModalComponent,
     AnimalBreedModalComponent,
+    UserModalComponent,
   ],
   imports: [
     BrowserModule,

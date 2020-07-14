@@ -8,7 +8,6 @@ import {AnimalBreedService} from '../../../service/animal-breed.service';
 import {AnimalClassService} from '../../../service/animal-class.service';
 import {MatDialog, MatDialogConfig} from '@angular/material/dialog';
 import Swal from 'sweetalert2';
-import {CountryModalComponent} from '../modal/country-modal/country-modal.component';
 import {AnimalBreedCreate} from '../../../models/animal-breed-create';
 import {AnimalBreedModalComponent} from '../modal/animal-breed-modal/animal-breed-modal.component';
 

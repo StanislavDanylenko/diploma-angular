@@ -1,0 +1,16 @@
+mat-form-field {
+  left: 30px;
+  width: 90%;
+}
+.btn-sec {
+  margin-right: 1rem !important;
+  text-align: right;
+  margin-top: 1.5em;
+}
+.Update-btn {
+  margin: 5px;
+}
+.Discard-btn {
+  margin: 5px;
+}
+
